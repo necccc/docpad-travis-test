@@ -1,0 +1,35 @@
+{
+  "name": "docpad-travis-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bal-util": "~1.15.3",
+    "docpad": "~6.78.4",
+    "docpad-plugin-coffeescript": "2.x",
+    "docpad-plugin-eco": "~2.1.0",
+    "docpad-plugin-ghpages": "~2.4.4",
+    "docpad-plugin-marked": "2.x",
+    "docpad-plugin-partials": "~2.9.1",
+    "docpad-plugin-sass": "~2.7.3",
+    "docpad-plugin-stylus": "2.x",
+    "docpad-plugin-text": "2.x",
+    "grunt": "~0.3.17",
+    "grunt-css": "~0.3.2",
+    "underscore": "~1.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "node_modules/.bin/docpad deploy-ghpages --silent --env static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/necccc/docpad-travis-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/necccc/docpad-travis-test/issues"
+  },
+  "homepage": "https://github.com/necccc/docpad-travis-test#readme"
+}

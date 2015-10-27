@@ -1,0 +1,30 @@
+sudo: false
+language: node_js
+node_js:
+- iojs
+cache:
+  directories:
+  - node_modules
+script: npm test
+after_success: |
+  if ([ ! -z "$DEPLOY_TOKEN" ] &&
+      [ "$TRAVIS_BRANCH" == "$DEPLOY_BRANCH" ] &&
+      [ -z "$TRAVIS_TAG" ] &&
+      [ "$TRAVIS_PULL_REQUEST" == "false" ]); then
+    echo "Deploying";
+    git config --global user.email "$DEPLOY_EMAIL";
+    git config --global user.name "$DEPLOY_NAME";
+    git remote rm origin;
+    git remote add origin "https://$DEPLOY_USER:$DEPLOY_TOKEN@github.com/$TRAVIS_REPO_SLUG.git";
+    npm run-script deploy;
+    echo "Deployed";
+  else
+    echo "Skipped deploy"
+  fi
+env:
+  global:
+  - DEPLOY_BRANCH="gh-pages"
+  - DEPLOY_NAME="necccc"
+  - DEPLOY_EMAIL="nec@shell8.net"
+  - secure: eYiGDgkZC9jPKL+vLCo5e1CZcCkN1NoqiV3axHxyyIVeUHxlJrmALNghGGe4OpovqDeW+CcahxVzL40aBUj26CXAks5bLROGcFFA0aCO0j5cDYzCpOg3g0r9TygVl8lVQRGxBQS8+nhYgOfACARz3gLUgVXgElbZpfbPNTXTh8+yHv2sbqHwIw4V4Wlot8vi+7qTjGO2FfbLrT3WGuLmnCT7de8mI1jQOuR5bK2BJsL4IQZT576l9wfrA655ATg1TLirZz2Rsz1N+9qEw9XM9FN9Dyunui5vnBeUhihLkcAQivnBrmSNDYUY72bpMcBJx8NWLJacYvpVYmUB1pQasX0/psM/WLFry5JEzWDiZrcOiNkJOqFAqdLgcwF3bH2qjr6J7kKJQ1tNZI3ogSyrhHQetOpz+wNZDwVZeNrGASrUFwJmbX8heQ3bNJYlcFtxMXt+kaPkaRNl7rkmaMur0Yd64OjTzABjiyMQyqNlKsYSYJvJvcSiylFMG7+lNeTNwHB9FfFVyjBeg+qpUBPcokBTiX3hQGHuEaSCLPP5IdO+YrsVLNM+OlOa6TC4e3VD9bHGP/7eLgOF2duPOEMsRcV2PEBGSihHStdHD+gaIW/8o2GaOkCOhjDswvVO5ajGfGWrKAhuMIDH5nJrEW1AQb52QYFJSx3ugRu78HVmmY4=
+  - secure: AeMo1gyo3Pse6+W4qEQxX38V4MdK5U4KKyEw6kWZkUjdHcsP/SCjiKw0MT+PS7TM1g7N+fp1tF8t/hF3Uu9sEl92D1EXxHaDWexEseCa4K1NW7UQdWutBRUztbj/vHvax4zar0iejEb2UljKKHJ0ddd5f3Fpe8dH/kgBP8EUC6+s+gq/JydkJsC5CJ/ilry4w36JYEYUIW1EvQR5vPpZri+E8/eA+MOAeN4iEGw/u6EVJon/W5UAR0gmo/lXRGh8pSYzLrdQf7dl5TueIPczi6Q+Vy5Cp3Z71HPdd3il6SERe8Laud6p/sSbx9RGb6u/WpUpRcPUUjVg85Fq7O2JefInQYoZhnlSRcFtS+R6i+HEQy2m1rLPLxIgaJdMTnVhGPIFqTwfbj6dvhBapxOaTkZp7NTbN7v45rrp0O0TbQBNVGMC8aqGmNbSH9CMMp7imaEZe29M6fgzn4uMeQvqK3RjUcCXia5vy6DbV4KHh+2JBuGMgni6CE6s/MLbGYpdBVb4lE8lgdSrJ7hsiL5+48uyX+7x5jYe7Zd+p8bLWcjoscU1HlW7gYhwZCFoWAW3pqZRqQUPJPBTZBRnXa/wsCsppp+7xKVk1dGMmUIdztIwdmUaugSR/BstGlAsMGg9cibDodq3ii6fcZCa4yXy3hSuiGGshB4/Lt4zGjj0mOw=
