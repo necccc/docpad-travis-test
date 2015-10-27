@@ -2,8 +2,6 @@
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
 
-	outPath: ''
-
 	srcPath: 'src'  # default
 
 	# =================================
@@ -122,7 +120,7 @@ docpadConfig = {
 
 			# Make sure to register a grunt `default` task
 			command = ["#{rootPath}/node_modules/.bin/grunt", 'default']
-			
+
 			# Execute
 			balUtil.spawn command, {cwd:rootPath,output:true}, ->
 				src = []
