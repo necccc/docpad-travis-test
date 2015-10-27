@@ -1,7 +1,4 @@
 sudo: false
-branches:
-  only:
-    - gh-pages
 language: node_js
 node_js:
 - iojs
@@ -26,7 +23,7 @@ after_success: |
   fi
 env:
   global:
-  - DEPLOY_BRANCH="gh-pages"
+  - DEPLOY_BRANCH="master"
   - DEPLOY_NAME="necccc"
   - DEPLOY_EMAIL="nec@shell8.net"
   - secure: eYiGDgkZC9jPKL+vLCo5e1CZcCkN1NoqiV3axHxyyIVeUHxlJrmALNghGGe4OpovqDeW+CcahxVzL40aBUj26CXAks5bLROGcFFA0aCO0j5cDYzCpOg3g0r9TygVl8lVQRGxBQS8+nhYgOfACARz3gLUgVXgElbZpfbPNTXTh8+yHv2sbqHwIw4V4Wlot8vi+7qTjGO2FfbLrT3WGuLmnCT7de8mI1jQOuR5bK2BJsL4IQZT576l9wfrA655ATg1TLirZz2Rsz1N+9qEw9XM9FN9Dyunui5vnBeUhihLkcAQivnBrmSNDYUY72bpMcBJx8NWLJacYvpVYmUB1pQasX0/psM/WLFry5JEzWDiZrcOiNkJOqFAqdLgcwF3bH2qjr6J7kKJQ1tNZI3ogSyrhHQetOpz+wNZDwVZeNrGASrUFwJmbX8heQ3bNJYlcFtxMXt+kaPkaRNl7rkmaMur0Yd64OjTzABjiyMQyqNlKsYSYJvJvcSiylFMG7+lNeTNwHB9FfFVyjBeg+qpUBPcokBTiX3hQGHuEaSCLPP5IdO+YrsVLNM+OlOa6TC4e3VD9bHGP/7eLgOF2duPOEMsRcV2PEBGSihHStdHD+gaIW/8o2GaOkCOhjDswvVO5ajGfGWrKAhuMIDH5nJrEW1AQb52QYFJSx3ugRu78HVmmY4=
